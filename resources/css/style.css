@@ -18,10 +18,10 @@ body {
 }
 
 .container {
+    height: 650px;
+    min-height: 650px;
     display: flex;
     overflow: auto;
-
-    min-height: 650px;
 }
 
 .board {
