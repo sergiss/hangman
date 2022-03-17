@@ -11,20 +11,24 @@ body.push(document.querySelector("#left-leg"));
 body.push(document.querySelector("#right-leg"));
 
 const setWord = (value) => {
+    ok = nok = 0;
     labels = [];
+    word = value;
     const el = document.querySelector("#word-container");
     el.innerHTML = '';
-    for(let i = 0; i < value.length; ++i) {
-        labels[i] = document.createElement("label");
-        labels[i].classList.add("label")
-        labels[i].innerText = '';
+    for(let i = 0; i < value.length; ++i) { // iterate word
+        labels[i] = document.createElement("label"); // create label
+        labels[i].classList.add("label"); // set class
         el.appendChild(labels[i]);
+        if(value.charAt(i) === ' ') { // check empty space
+            labels[i].style.visibility = "hidden";
+            ok++;
+        }
     }
-    word = value;
-    for(let i = 0; i < body.length; ++i) {
+    for(let i = 0; i < body.length; ++i) { // hide hangman
         body[i].style.visibility = "hidden";
     }
-    ok = nok = 0;
+    
     initKeyboard();
 }
 
@@ -39,7 +43,7 @@ const initKeyboard = ()=> {
         input.type = "button";
         input.addEventListener("click", (e) => {
          
-            if(ok < body.length && nok < body.length)  { // is clickable?
+            if(ok < word.length && nok < body.length)  { // is clickable?
                 const value = e.target.value; // target value (character)
                 e.target.disabled = true;     // disable input button
     
@@ -50,21 +54,21 @@ const initKeyboard = ()=> {
                         labels[index].innerText = word.charAt(index);     // reveal
                         ok++; // increase hits 
                     }
-                    if(ok === body.length) { // check game over
+                    if(ok === word.length) { // check game over
                         // TODO : win
                    }
                 } else { // NOK
                     body[nok].style.visibility = "visible"; // add body part
                     nok++; // increase fails
-                    if(nok === body.length) { // check game over
+                    if(nok >= body.length) { // check game over
                          // TODO : lose
                     }
                 }
-            }
+            } 
 
         });
         el.appendChild(input);
     }
 }
 
-setWord("Alicia");
+setWord("Maria Gloria");
