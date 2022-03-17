@@ -20,6 +20,8 @@ body {
 .container {
     display: flex;
     overflow: auto;
+
+    min-height: 650px;
 }
 
 .board {
@@ -66,7 +68,6 @@ input {
 .hangman {
     position: relative;
     height: 200px;
-    min-height: 200px;
     width: 200px;
     border: 1px solid gray;
     background-color: rgb(241, 241, 241);
