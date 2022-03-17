@@ -35,7 +35,7 @@ body {
     font-size: 3rem;
 }
 
-#word-container{
+#word-container {
     display: flex;
     flex-direction: row;
     gap: 5px;
@@ -167,4 +167,28 @@ input {
     top: 105px;
     left: calc(50% + 14px);
     transform: rotate(-30deg);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+a {
+    font-size: 1.5rem;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
 }

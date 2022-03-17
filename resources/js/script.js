@@ -10,26 +10,40 @@ body.push(document.querySelector("#right-arm"));
 body.push(document.querySelector("#left-leg"));
 body.push(document.querySelector("#right-leg"));
 
-const setWord = (value) => {
-    ok = nok = 0;
-    labels = [];
+document.querySelector("#new-game").addEventListener("click", ()=>{
+    newGame();
+});
+
+const newGame = (value = rndWord()) => {
     word = value;
+
+    document.querySelector("#info").style.display = "none";
+
+    initBody();
+    initLabels();
+    initKeyboard();
+}
+
+const initBody = ()=> {
+    nok = 0;
+    for(let i = 0; i < body.length; ++i) { // hide hangman
+        body[i].style.visibility = "hidden";
+    }
+}
+
+const initLabels = ()=> {
+    ok = 0; labels = [];
     const el = document.querySelector("#word-container");
     el.innerHTML = '';
-    for(let i = 0; i < value.length; ++i) { // iterate word
+    for(let i = 0; i < word.length; ++i) { // iterate word
         labels[i] = document.createElement("label"); // create label
         labels[i].classList.add("label"); // set class
         el.appendChild(labels[i]);
-        if(value.charAt(i) === ' ') { // check empty space
+        if(word.charAt(i) === ' ') { // check empty space
             labels[i].style.visibility = "hidden";
             ok++;
         }
     }
-    for(let i = 0; i < body.length; ++i) { // hide hangman
-        body[i].style.visibility = "hidden";
-    }
-    
-    initKeyboard();
 }
 
 const initKeyboard = ()=> {
@@ -71,4 +85,8 @@ const initKeyboard = ()=> {
     }
 }
 
-setWord("Maria Gloria");
+rndWord = ()=> {
+    return "Maria Gloria"
+}
+
+newGame();
