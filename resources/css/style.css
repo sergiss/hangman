@@ -174,11 +174,13 @@ input {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 30px;
+    margin: 20px;
 }
 
 h2 {
     font-size: 2rem;
+    margin: 0;
+    margin-bottom: 20px;
 }
 
 a {

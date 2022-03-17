@@ -1,3 +1,9 @@
+
+/* 
+ 2022 - Sergio S.
+ https://github.com/sergiss
+*/
+
 var ok, nok;
 var word = "";
 var labels = [];
@@ -69,13 +75,20 @@ const initKeyboard = ()=> {
                         ok++; // increase hits 
                     }
                     if(ok === word.length) { // check game over
-                        // TODO : win
+                        let tmp = document.querySelector("#info");
+                        tmp.style.display = "block";
+                        tmp.style.color = "green";
+                        tmp.innerText = "You Win";
                    }
                 } else { // NOK
                     body[nok].style.visibility = "visible"; // add body part
                     nok++; // increase fails
                     if(nok >= body.length) { // check game over
-                         // TODO : lose
+                        let tmp = document.querySelector("#info");
+                        tmp.style.display = "block";
+                        tmp.style.color = "red";
+                        tmp.innerText = "Game Over";
+                        reveal();
                     }
                 }
             } 
@@ -85,7 +98,13 @@ const initKeyboard = ()=> {
     }
 }
 
-rndWord = ()=> {
+const reveal = ()=> {
+    for(let i = 0; i < word.length; ++i) {
+        labels[i].innerText = word.charAt(i);
+    }
+}
+
+const rndWord = ()=> {
     return "Maria Gloria"
 }
 
