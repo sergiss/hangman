@@ -4,6 +4,7 @@
  https://github.com/sergiss
 */
 
+var data;
 var ok, nok;
 var word = "";
 var labels = [];
@@ -105,7 +106,14 @@ const reveal = ()=> {
 }
 
 const rndWord = ()=> {
-    return "Maria Gloria"
+    return data[Math.floor(data.length * Math.random())];
 }
 
-newGame();
+const init = async (lang = 'en')=> {
+    response = await fetch(`resources/data/data-${lang}.txt`);
+    const text = await response.text();
+    data = text.split(/\r?\n/); // Split words array
+    newGame();
+}
+
+init();
