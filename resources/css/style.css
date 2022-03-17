@@ -18,8 +18,6 @@ body {
 }
 
 .container {
-    height: 650px;
-    min-height: 650px;
     display: flex;
     overflow: auto;
 }
@@ -29,7 +27,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
 .title {
